@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Employee {
-    private String SurnameName;
+    private String name;
     private List<Task> taskList = new ArrayList<>();
 
-    public Employee(String SurnameName) {
-        this.SurnameName = SurnameName;
+    public Employee(String name) {
+        this.name = name;
     }
 
-    public String getSurnameName() {
-        return SurnameName;
+    public String getName() {
+        return name;
     }
 
 

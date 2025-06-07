@@ -25,9 +25,9 @@ public class DataModel {
         return project;
     }
 
-    public Employee getEmployee(String surnameName) {
+    public Employee addEmployee(String surnameName) {
         for (Employee employee : employeesList) {
-            if (employee.getSurnameName().equals(surnameName)) {
+            if (employee.getName().equals(surnameName)) {
                 return employee;
             }
         }
@@ -36,4 +36,7 @@ public class DataModel {
         return employee;
     }
 
+    public ArrayList<Employee> getEmployeesList() {
+        return employeesList;
+    }
 }
