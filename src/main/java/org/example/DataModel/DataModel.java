@@ -10,8 +10,13 @@ public class DataModel {
         this.name = name;
 
     }
-    public ArrayList<Project> getTaskList() {
+    public ArrayList<Project> getAllProjects() {
         return projectList;
+    }
+
+
+    public ArrayList<Employee> getEmployeesList(){
+        return employeesList;
     }
 
     public Project getProject(String projectName) {
