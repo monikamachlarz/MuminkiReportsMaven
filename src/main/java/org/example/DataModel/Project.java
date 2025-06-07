@@ -6,7 +6,7 @@ import java.util.List;
 public class Project {
     private String name;
 
-    private ArrayList<Task> taskList = new ArrayList<>();
+    private List<Task> taskList = new ArrayList<>();
 
     public Project(String name) {
         this.name = name;
@@ -16,8 +16,12 @@ public class Project {
         return name;
     }
 
-    public ArrayList<Task> getTaskList() {
+    public List<Task> getTaskList() {
         return taskList;
+    }
+
+    public void addTask(Task task) {
+        taskList.add(task);
     }
 
 }

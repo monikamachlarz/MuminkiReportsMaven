@@ -19,6 +19,9 @@ public class Employee {
     public List<Task> getTaskList() {
         return taskList;
     }
+    public void addTask(Task task) {
+        taskList.add(task);
+    }
 
 
 }
