@@ -11,10 +11,20 @@ public class ExcelReader{
 
     public void readExcel(String filePath) {
         try (FileInputStream fis = new FileInputStream(new File(filePath));
-             Workbook workbook = new HSSFWorkbook(fis)) {
+             Workbook workbook = new HSSFWorkbook(fis)) { // używamy HSSFWorkbook dla .xls
 
+            // Wyświetlenie nazw arkuszy (zakładek)
+            int numberOfSheets = workbook.getNumberOfSheets();
+            System.out.println("Zakładki w pliku: ");
+            for (int i = 0; i < numberOfSheets; i++) {
+                System.out.println(" - " + workbook.getSheetName(i));
+            }
+
+            // Wczytywanie danych z pierwszego arkusza (możesz zmienić indeks, aby odczytać inne)
             Sheet sheet = workbook.getSheetAt(0); // pierwszy arkusz
+            System.out.println("Odczyt z arkusza: " + sheet.getSheetName());
 
+            // Odczyt danych z arkusza
             for (Row row : sheet) {
                 for (Cell cell : row) {
                     switch (cell.getCellType()) {
@@ -45,6 +55,7 @@ public class ExcelReader{
             System.err.println("Błąd podczas odczytu pliku Excel: " + e.getMessage());
         }
     }
+
 
     public void readAllExcelFilesRecursively(String directoryPath) {
         File dir = new File(directoryPath);
