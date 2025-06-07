@@ -1,5 +1,6 @@
 package org.example;
 
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -7,51 +8,73 @@ public class Main {
     public static void main(String[] args) throws IOException {
         String choice = "";
 
-        while (!choice.equals("exit")) {
+        while (!choice.equals("koniec")) {
             System.out.println("\n########## WORK REPORTS v0.1 ##########");
-            System.out.println("Wybierz typ raportu: 1, 2, 3, 4, 5, 6");
+            System.out.println("Wybierz typ raportu: 1, 2, 3, 4, 5, 6. \nWpisz 'koniec' aby zamknac program");
             Scanner scanner = new Scanner(System.in);
             choice = scanner.nextLine();
             switch (choice) {
                 case "1" -> {
-                    System.out.println("Podaj rok:");
-                    String year = scanner.nextLine();
-                    /* metoda wolajaca raport1(year) */
+                    String rok = wczytajRok(scanner);
+                    /* wygenerujRaport1(rok); */
+                    System.out.println("Tutaj bedzie wolana metoda wygenerujRaport1(rok)");
                 }
                 case "2" -> {
-                    System.out.println("Podaj rok:");
-                    String year = scanner.nextLine();
-                    /* metoda wolajaca raport2(year) */
+                    String rok = wczytajRok(scanner);
+                    /* wygenerujRaport2(rok); */
+                    System.out.println("Tutaj bedzie wolana metoda wygenerujRaport2(rok)");
                 }
                 case "3" -> {
-                    System.out.println("Podaj rok:");
-                    String year = scanner.nextLine();
-                    System.out.println("Podaj pracownika: ");
-                    String employee = scanner.nextLine();
-                    /* metoda wolajaca raport3(year, employee) */
+                    String rok = wczytajRok(scanner);
+                    String pracownik = wczytajPracownika(scanner);
+                    /* wygenerujRaport3(rok, pracownik); */
+                    System.out.println("Tutaj bedzie wolana metoda wygenerujRaport3(rok, pracownik)");
                 }
                 case "4" -> {
-                    System.out.println("Podaj rok:");
-                    String year = scanner.nextLine();
-                    System.out.println("Podaj pracownika: ");
-                    String employee = scanner.nextLine();
-                    /* metoda wolajaca raport4(year, employee) */
+                    String rok = wczytajRok(scanner);
+                    String pracownik = wczytajPracownika(scanner);
+                    /* wygenerujRaport4(rok, pracownik); */
+                    System.out.println("Tutaj bedzie wolana metoda wygenerujRaport4(rok, pracownik)");
                 }
                 case "5" -> {
-                    System.out.println("Podaj rok: ");
-                    String year = scanner.nextLine();
-                    System.out.println("Podaj pracownika: ");
-                    String employee = scanner.nextLine();
-                    /* metoda wolajaca raport5(year, employee) */
+                    String rok = wczytajRok(scanner);
+                    String pracownik = wczytajPracownika(scanner);
+                    /* wygenerujRaport5(rok, pracownik); */
+                    System.out.println("Tutaj bedzie wolana metoda wygenerujRaport5(rok, pracownik)");
                 }
                 case "6" -> {
-                    System.out.println("Podaj rok: ");
-                    String year = scanner.nextLine();
-                    System.out.println("Podaj tag: ");
+                    String rok = wczytajRok(scanner);
+                    System.out.println("Podaj tag:");
                     String tag = scanner.nextLine();
-                    /* metoda wolajaca raport6(year, tag) */
+                    /* wygenerujRaport6(rok, tag); */
+                    System.out.println("Tutaj bedzie wolana metoda wygenerujRaport6(rok, tag)");
                 }
             }
         }
     }
+
+    private static String wczytajRok(Scanner scanner) {
+        while (true) {
+            System.out.println("Podaj rok (akceptowany format YYYY):");
+            String year = scanner.nextLine();
+            if (year.matches("\\d{4}")) {
+                return year;
+            } else {
+                System.out.println("Nieprawidłowy format roku. Spróbuj ponownie (np. 2024).");
+            }
+        }
+    }
+
+    private static String wczytajPracownika(Scanner scanner) {
+        while (true) {
+            System.out.println("Podaj pracownika (akceptowany format nazwisko_imie):");
+            String input = scanner.nextLine();
+            if (input.matches("\\p{L}+_\\p{L}+")) {
+                return input;
+            } else {
+                System.out.println("Nieprawidłowy format. Wprowadź nazwisko i imię w formacie nazwisko_imie (np. Kowalski_Jan).");
+            }
+        }
+    }
+
 }
