@@ -4,20 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Employee {
+
     private String surnameName;
-    private List<Task> taskList = new ArrayList<>();
+
+    public Employee() {
+    }
 
     public Employee(String surnameName) {
         this.surnameName = surnameName;
     }
 
-    public String getSurnameName() {
-        return surnameName;
+    public void setSurnameName(String surnameName) {
+        this.surnameName = surnameName;
     }
 
-
-    public List<Task> getTaskList() {
-        return taskList;
+    public String getSurnameName() {
+        return surnameName;
     }
 
 

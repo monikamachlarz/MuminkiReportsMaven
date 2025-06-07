@@ -3,13 +3,18 @@ package org.example.DataModel;
 import java.util.ArrayList;
 
 public class DataModel {
-    private String name;
+    private String projectName;
     private ArrayList<Project> projectList = new ArrayList<>();
-    private ArrayList<Employee> employeesList = new ArrayList<>();
-    public DataModel(String name, Project project) {
-        this.name = name;
 
+    private ArrayList<Employee> employeesList = new ArrayList<>();
+
+    public DataModel(){
     }
+
+//    public DataModel(String projectName) {
+//        this.projectName = projectName;
+//    }
+
     public ArrayList<Project> getTaskList() {
         return projectList;
     }
@@ -34,6 +39,14 @@ public class DataModel {
         Employee employee = new Employee(surnameName);
         employeesList.add(employee);
         return employee;
+    }
+
+    public ArrayList<Employee> getEmployeesList() {
+        return employeesList;
+    }
+
+    public ArrayList<Project> getProjectList() {
+        return projectList;
     }
 
 }

@@ -20,4 +20,8 @@ public class Project {
         return taskList;
     }
 
+    public void addTaskToList(Task task) {
+        taskList.add(task);
+    }
+
 }
