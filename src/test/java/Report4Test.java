@@ -43,12 +43,13 @@ public class Report4Test {
 
         // Wygenerowanie raportu
         report4.generateReport();
-
         // Sprawdzenie wyniku
         String output = outContent.toString();
         assertTrue(output.contains("RAPORT: Report4"));
         assertTrue(output.contains("% czasu "));
         assertTrue(output.contains("-"));
+        assertTrue(output.contains(" "));
+
 
 
     }
