@@ -42,7 +42,9 @@ public class Report2 implements IReport{
                     hours = hours + task.getHours();
                 }
             }
-            System.out.println ("| "+ ++number+".| " + project.getName()+" |" + hours+"|");
+            if (hours > 0){
+                System.out.println ("| "+ ++number+".| " + project.getName()+" |" + hours+"|");
+            }
 
         }
         System.out.println("-------------------------------------------------------------");
