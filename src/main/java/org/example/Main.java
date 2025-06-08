@@ -3,6 +3,7 @@ package org.example;
 
 import org.example.DataModel.DataModel;
 import org.example.Report.Report1;
+import org.example.Report.Report2;
 
 import java.io.IOException;
 
@@ -12,9 +13,9 @@ public class Main {
         DataModel dataModel = new DataModel("MyDataModel");
         ExcelReader reader = new ExcelReader(dataModel);
 
-        reader.readAllExcelFilesRecursively("src/main/resources/2012");
+        reader.readAllExcelFilesRecursively("src/main/resources");
 
-        Report1 reportGenerator = new Report1(dataModel);
+        Report2 reportGenerator = new Report2(2025, dataModel);
         reportGenerator.generateReport();
 
         //   ReportGenerator reportGenerator = new ReportGenerator(dataModel);

@@ -39,4 +39,5 @@ public class DataModel {
     public ArrayList<Employee> getEmployeesList() {
         return employeesList;
     }
+    public ArrayList<Project> getProjectList() {return projectList;}
 }
