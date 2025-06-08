@@ -14,6 +14,7 @@ public class Report1  implements IReport {
         this.dataModel = dataModel;
     }
 
+    @Override
     public void generateReport() {
         String className = this.getClass().getSimpleName();
         System.out.println("\n+================= RAPORT: " + className + " ==================+");
