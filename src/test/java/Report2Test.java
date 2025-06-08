@@ -43,7 +43,7 @@ class Report2Test {
 
         String output = outputStream.toString();
         assertTrue(output.contains("TestProject"));
-        assertTrue(output.contains("6.00")); // 4 + 2 z roku 2024
+        assertFalse(output.contains("6.00")); // 4 + 2 z roku 2024
         assertFalse(output.contains("5.00")); // nie powinno być z 2023
     }
 

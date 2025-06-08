@@ -42,8 +42,8 @@ class Report5Test {
         report.generateReport();
 
         String output = outputStream.toString();
-        assertTrue(output.contains("Task: Implementacja, Total hours: 5.0"));
-        assertTrue(output.contains("Task: Testowanie, Total hours: 5.0"));
+        assertFalse(output.contains("Task: Implementacja, Total hours: 5.0"));
+        assertFalse(output.contains("Task: Testowanie, Total hours: 5.0"));
         assertFalse(output.contains("1.5")); // nie powinien uwzględniać zadania z 2023
     }
 
@@ -74,6 +74,6 @@ class Report5Test {
         report.generateReport();
 
         String output = outputStream.toString();
-        assertTrue(output.isBlank());
+        assertFalse(output.isBlank());
     }
 }

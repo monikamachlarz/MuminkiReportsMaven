@@ -14,7 +14,10 @@ public class Main {
 
         DataModel dataModel = new DataModel("MyDataModel");
         ExcelReader reader = new ExcelReader(dataModel);
-        reader.readAllExcelFilesRecursively("src/main/resources");
+        String startPath = "data";
+        if (args.length>0)
+            startPath = args[0];
+        reader.readAllExcelFilesRecursively(startPath);
 
 
         String choice = "";
