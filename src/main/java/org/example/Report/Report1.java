@@ -4,6 +4,7 @@ import org.example.DataModel.DataModel;
 import org.example.DataModel.Employee;
 import org.example.DataModel.Task;
 
+
 public class Report1  implements IReport {
 
     private DataModel dataModel;

@@ -1,11 +1,9 @@
 package org.example.Report;
 
 import org.example.DataModel.DataModel;
-import org.example.DataModel.Employee;
 import org.example.DataModel.Project;
 import org.example.DataModel.Task;
 
-import java.time.LocalDate;
 
 public class Report2 implements IReport{
 
@@ -14,12 +12,11 @@ public class Report2 implements IReport{
 
 
     public Report2 (int year, DataModel dataModel){
-        if ( year<1990 || year> 2100){
+        if (year<1990 || year> 2100) {
             return;
         }
         this.dataModel = dataModel;
         this.year = year;
-
     }
 
     public DataModel getDataModel() {
