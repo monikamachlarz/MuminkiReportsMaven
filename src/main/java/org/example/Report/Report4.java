@@ -5,6 +5,7 @@ import org.example.DataModel.Project;
 import org.example.DataModel.Task;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class Report4 implements IReport {
 
@@ -66,4 +67,7 @@ public class Report4 implements IReport {
         System.out.println("-------------------------------------------------------------");
 
     }
+
+    @Override
+    public void exportReportToPdf(List<String> lines, String outputPath) {}
 }

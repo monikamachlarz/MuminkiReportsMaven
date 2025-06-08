@@ -6,18 +6,19 @@ import com.lowagie.text.pdf.PdfWriter;
 import org.example.DataModel.DataModel;
 import org.example.DataModel.Project;
 import org.example.DataModel.Task;
+
 import java.io.FileOutputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Report2 implements IReport{
+public class Report2 implements IReport {
 
     private DataModel dataModel;
     private int year;
 
 
-    public Report2 (int year, DataModel dataModel){
+    public Report2(int year, DataModel dataModel) {
 
         this.dataModel = dataModel;
         this.year = year;
@@ -30,13 +31,6 @@ public class Report2 implements IReport{
 
     @Override
     public void generateReport() {
-        System.out.println("Report2: ");
-        System.out.println("-------------------------------------------------------------");
-        System.out.println("|LP| Project name | Hours|");
-        System.out.println("-------------------------------------------------------------");
-        System.out.println();
-        int number = 0;
-        for (Project project : getDataModel().getProjectList()) {
 
         String className = this.getClass().getSimpleName();
         System.out.println("\n+================= RAPORT: " + className + " ==================+");
@@ -44,7 +38,7 @@ public class Report2 implements IReport{
         System.out.println("+------+-------------------------------+-------------+");
 
         int id = 1;
-        for (Project project : getDataModel().getProjectList()){
+        for (Project project : getDataModel().getProjectList()) {
             double hours = 0;
             for (Task task : project.getTaskList()) {
                 if (task.getDate().getYear() == year) {
@@ -53,7 +47,6 @@ public class Report2 implements IReport{
             }
             if (hours > 0) {
 
-                System.out.println("| " + ++number + ".| " + project.getName() + " |" + hours + "|");
                 printReport(id++, project.getName(), hours);
             }
         }
@@ -65,5 +58,6 @@ public class Report2 implements IReport{
     }
 
     @Override
-    public void exportReportToPdf(List<String> lines, String outputPath) {}
+    public void exportReportToPdf(List<String> lines, String outputPath) {
+    }
 }
