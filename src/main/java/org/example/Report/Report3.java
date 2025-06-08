@@ -82,7 +82,7 @@ public class Report3 implements IReport{
 
         for (Month localDate : monthTaskMap.keySet()) {
             HashMap <Project, Double> projectHours = new HashMap <>();
-            System.out.print (" "+year + " - " + localDate);
+            //System.out.print (" "+year + " - " + localDate+" ");
 
             for (int i = 0; i < monthTaskMap.get(localDate).size(); i++) {
                 double hours = 0;
@@ -98,10 +98,13 @@ public class Report3 implements IReport{
 
 
 
+
             }
 
+            //System.out.println (" "+year + " - " + localDate+" "+monthTaskMap.get(localDate).get(i).getProject().getName() + " " + hours);
+
             for (Project project : projectHours.keySet()) {
-                System.out.println(project.getName() + " " + projectHours.get(project));
+                System.out.println(" "+year + " - " + localDate+" "+project.getName() + " " + projectHours.get(project));
             }
 
 
