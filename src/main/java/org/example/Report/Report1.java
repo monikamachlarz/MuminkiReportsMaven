@@ -14,28 +14,30 @@ public class Report1  implements IReport {
         this.dataModel = dataModel;
     }
 
-    @Override
     public void generateReport() {
         String className = this.getClass().getSimpleName();
-        System.out.println("\n+=============== RAPORT: " + className + " =============+");
-        System.out.printf("%-31s | %-10s%n", "| Employee Name", "Total Hours |");
-        System.out.println("+-------------------------------+-------------+");
+        System.out.println("\n+================= RAPORT: " + className + " ==================+");
+        System.out.printf("| %-4s | %-29s | %-10s%n", "ID", "Employee Name", "Total Hours |");
+        System.out.println("+------+-------------------------------+-------------+");
+
+        int id = 1;
         for (Employee employee : dataModel.getEmployeesList()) {
             double totalHours = 0;
             for (Task task : employee.getTaskList()) {
-                if (task.getDate().getYear()==year) {
-                    totalHours = totalHours + task.getHours();
+                if (task.getDate().getYear() == year) {
+                    totalHours += task.getHours();
                 }
             }
-            printReport(employee.getName(), totalHours);
+            if (totalHours > 0) {
+                printReport(id++, employee.getName(), totalHours);
+            }
         }
-        System.out.println("+=============================================+");
+        System.out.println("+====================================================+");
     }
 
-    public void printReport(String employee, double totalHours) {
-        if (totalHours > 0) {
-            System.out.printf("| %-29s | %-11.2f |%n", employee, totalHours);
-        }
+    public void printReport(int id, String employee, double totalHours) {
+        System.out.printf("| %-4d | %-29s | %-11.2f |%n", id, employee, totalHours);
     }
+
 }
 
