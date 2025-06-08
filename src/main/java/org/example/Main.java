@@ -5,6 +5,7 @@ import org.example.DataModel.DataModel;
 import org.example.Report.*;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -28,6 +29,8 @@ public class Main {
                     String rok = readYear(scanner);
                     IReport report1 = new Report1(Integer.parseInt(rok), dataModel);
                     report1.generateReport();
+                    List<String> reportToExport = report1.generateReportForExport();
+                    report1.exportReportToPdf(reportToExport, "report1.pdf");
                 }
                 case "2" -> {
                     String rok = readYear(scanner);

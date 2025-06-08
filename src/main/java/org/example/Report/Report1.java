@@ -11,6 +11,8 @@ import org.example.DataModel.Task;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +48,7 @@ public class Report1  implements IReport {
         System.out.println("+====================================================+");
     }
 
+    @Override
     public List<String> generateReportForExport () {
         List<String> reportLines = new ArrayList<>();
 
@@ -65,6 +68,7 @@ public class Report1  implements IReport {
 
     @Override
     public void exportReportToPdf(List<String> lines, String outputPath) {
+        Path downloadPath = Paths.get(System.getProperty("user.home"), "Downloads");
         try {
             Document document = new Document();
             PdfWriter.getInstance(document, new FileOutputStream(outputPath));
@@ -75,7 +79,7 @@ public class Report1  implements IReport {
             }
 
             document.close();
-            System.out.println("Zapisano PDF: " + outputPath);
+            System.out.println("Zapisano PDF: " + downloadPath+ "/"+ outputPath);
         } catch (Exception e) {
             System.err.println("Błąd podczas zapisu PDF: " + e.getMessage());
 

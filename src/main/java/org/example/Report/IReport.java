@@ -7,4 +7,6 @@ public interface IReport {
     void generateReport();
   
     void exportReportToPdf(List<String> lines, String outputPath);
+
+    public List<String> generateReportForExport ();
 }

@@ -45,5 +45,10 @@ public class Report5 implements IReport{
     }
 
     @Override
+    public List<String> generateReportForExport (){
+        return generateReportForExport();
+    }
+
+    @Override
     public void exportReportToPdf(List<String> lines, String outputPath) {}
 }
