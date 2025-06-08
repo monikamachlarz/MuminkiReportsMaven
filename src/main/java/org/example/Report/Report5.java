@@ -23,7 +23,7 @@ public class Report5 implements IReport{
     public void generateReport() {
         String className = this.getClass().getSimpleName();
         System.out.println("\n+=============================================== RAPORT: " + className + " ================================================+");
-        System.out.printf("| %-4s | %-90s | %-10s%n", "ID", "Task Name", "Hours      |");
+        System.out.printf("| %-4s | %-90s | %-10s%n", "ID", "Nazwa taska ", "Godziny    |");
         System.out.println("+------+--------------------------------------------------------------------------------------------+------------+");
 
         int id = 1;
