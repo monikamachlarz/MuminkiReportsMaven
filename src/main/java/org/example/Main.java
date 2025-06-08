@@ -42,8 +42,12 @@ public class Main {
                 }
                 case "3" -> {
                     String rok = readYear(scanner);
-                    String pracownik = readEmployee(scanner);
-                    /* wygenerujRaport3(rok, pracownik); */
+
+                    System.out.println("Podaj pracownika (akceptowany format: nazwisko imie):");
+                    String pracownik = scanner.nextLine();
+
+                    IReport report3 = new Report3(Integer.parseInt(rok), dataModel, pracownik);
+                    report3.generateReport();
                 }
                 case "4" -> {
                     String rok = readYear(scanner);
@@ -82,18 +86,6 @@ public class Main {
                 return year;
             } else {
                 System.out.println("Nieprawidłowy format roku. Spróbuj ponownie (np. 2024).");
-            }
-        }
-    }
-
-    private static String readEmployee(Scanner scanner) {
-        while (true) {
-            System.out.println("Podaj pracownika (akceptowany format nazwisko_imie):");
-            String employee = scanner.nextLine();
-            if (employee.matches("\\p{L}+_\\p{L}+")) {
-                return employee;
-            } else {
-                System.out.println("Nieprawidłowy format. Wprowadź nazwisko i imię w formacie nazwisko_imie (np. Kowalski_Jan).");
             }
         }
     }
