@@ -14,9 +14,7 @@ public class Report2 implements IReport{
 
 
     public Report2 (int year, DataModel dataModel){
-        if ( year<1990 || year> 2100){
-            return;
-        }
+
         this.dataModel = dataModel;
         this.year = year;
 

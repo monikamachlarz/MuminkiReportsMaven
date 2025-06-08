@@ -2,93 +2,94 @@ package org.example;
 
 
 import org.example.DataModel.DataModel;
+import org.example.Report.IReport;
 import org.example.Report.Report1;
 import org.example.Report.Report2;
+import org.example.Report.Report5;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 
 public class Main {
     public static void main(String[] args) throws IOException {
+
         DataModel dataModel = new DataModel("MyDataModel");
         ExcelReader reader = new ExcelReader(dataModel);
-
         reader.readAllExcelFilesRecursively("src/main/resources");
 
-        Report2 reportGenerator = new Report2(2012, dataModel);
-        reportGenerator.generateReport();
 
-        //   ReportGenerator reportGenerator = new ReportGenerator(dataModel);
-//        String choice = "";
-//
-//        while (!choice.equals("koniec")) {
-//            System.out.println("\n########## WORK REPORTS v0.1 ##########");
-//            System.out.println("Wybierz typ raportu: 1, 2, 3, 4, 5, 6. \nWpisz 'koniec' aby zamknac program");
-//            Scanner scanner = new Scanner(System.in);
-//            choice = scanner.nextLine();
-//            switch (choice) {
-//                case "1" -> {
-//                    String rok = wczytajRok(scanner);
-//                    /* wygenerujRaport1(rok); */
-//                    System.out.println("Tutaj bedzie wolana metoda wygenerujRaport1(rok)");
-//                }
-//                case "2" -> {
-//                    String rok = wczytajRok(scanner);
-//                    /* wygenerujRaport2(rok); */
-//                    System.out.println("Tutaj bedzie wolana metoda wygenerujRaport2(rok)");
-//                }
-//                case "3" -> {
-//                    String rok = wczytajRok(scanner);
-//                    String pracownik = wczytajPracownika(scanner);
-//                    /* wygenerujRaport3(rok, pracownik); */
-//                    System.out.println("Tutaj bedzie wolana metoda wygenerujRaport3(rok, pracownik)");
-//                }
-//                case "4" -> {
-//                    String rok = wczytajRok(scanner);
-//                    String pracownik = wczytajPracownika(scanner);
-//                    /* wygenerujRaport4(rok, pracownik); */
-//                    System.out.println("Tutaj bedzie wolana metoda wygenerujRaport4(rok, pracownik)");
-//                }
-//                case "5" -> {
-//                    String rok = wczytajRok(scanner);
-//                    String pracownik = wczytajPracownika(scanner);
-//                    /* wygenerujRaport5(rok, pracownik); */
-//                    System.out.println("Tutaj bedzie wolana metoda wygenerujRaport5(rok, pracownik)");
-//                }
-//                case "6" -> {
-//                    String rok = wczytajRok(scanner);
-//                    System.out.println("Podaj tag:");
-//                    String tag = scanner.nextLine();
-//                    /* wygenerujRaport6(rok, tag); */
-//                    System.out.println("Tutaj bedzie wolana metoda wygenerujRaport6(rok, tag)");
-//                }
-//            }
-//        }
-//    }
-//
-//    private static String readYear(Scanner scanner) {
-//        while (true) {
-//            System.out.println("Podaj rok (akceptowany format YYYY):");
-//            String year = scanner.nextLine();
-//            if (year.matches("\\d{4}")) {
-//                return year;
-//            } else {
-//                System.out.println("Nieprawidłowy format roku. Spróbuj ponownie (np. 2024).");
-//            }
-//        }
-//    }
-//
-//    private static String readEmployee(Scanner scanner) {
-//        while (true) {
-//            System.out.println("Podaj pracownika (akceptowany format nazwisko_imie):");
-//            String employee = scanner.nextLine();
-//            if (employee.matches("\\p{L}+_\\p{L}+")) {
-//                return employee;
-//            } else {
-//                System.out.println("Nieprawidłowy format. Wprowadź nazwisko i imię w formacie nazwisko_imie (np. Kowalski_Jan).");
-//            }
-//        }
-//    }
+        String choice = "";
+
+        while (!choice.equals("koniec")) {
+            System.out.println("\n########## WORK REPORTS v0.1 ##########");
+            System.out.println("Wybierz typ raportu: 1, 2, 3, 4, 5, 6. \nWpisz 'koniec' aby zamknac program");
+            Scanner scanner = new Scanner(System.in);
+            choice = scanner.nextLine();
+            switch (choice) {
+                case "1" -> {
+                    String rok = readYear(scanner);
+                    IReport report1 = new Report1(Integer.parseInt(rok), dataModel);
+                    report1.generateReport();
+                }
+                case "2" -> {
+                    String rok = readYear(scanner);
+                    IReport report2 = new Report2(Integer.parseInt(rok), dataModel);
+                    report2.generateReport();
+                }
+                case "3" -> {
+                    String rok = readYear(scanner);
+                    String pracownik = readEmployee(scanner);
+                    /* wygenerujRaport3(rok, pracownik); */
+                }
+                case "4" -> {
+                    String rok = readYear(scanner);
+                    String pracownik = readEmployee(scanner);
+
+                    /* wygenerujRaport4(rok, pracownik); */
+                    System.out.println("Tutaj bedzie wolana metoda wygenerujRaport4(rok, pracownik)");
+                }
+                case "5" -> {
+                    String rok = readYear(scanner);
+                    System.out.println("Podaj nazwe projektu");
+                    String nazwaProjektu = scanner.nextLine();
+                    IReport report5 = new Report5(dataModel, Integer.parseInt(rok),  nazwaProjektu);
+                    report5.generateReport();
+
+                }
+                case "6" -> {
+                    String rok = readYear(scanner);
+                    System.out.println("Podaj tag:");
+                    String tag = scanner.nextLine();
+                    /* wygenerujRaport6(rok, tag); */
+                    System.out.println("Tutaj bedzie wolana metoda wygenerujRaport6(rok, tag)");
+                }
+            }
+        }
+    }
+
+    private static String readYear(Scanner scanner) {
+        while (true) {
+            System.out.println("Podaj rok (akceptowany format YYYY):");
+            String year = scanner.nextLine();
+            if (year.matches("\\d{4}")) {
+                return year;
+            } else {
+                System.out.println("Nieprawidłowy format roku. Spróbuj ponownie (np. 2024).");
+            }
+        }
+    }
+
+    private static String readEmployee(Scanner scanner) {
+        while (true) {
+            System.out.println("Podaj pracownika (akceptowany format nazwisko_imie):");
+            String employee = scanner.nextLine();
+            if (employee.matches("\\p{L}+_\\p{L}+")) {
+                return employee;
+            } else {
+                System.out.println("Nieprawidłowy format. Wprowadź nazwisko i imię w formacie nazwisko_imie (np. Kowalski_Jan).");
+            }
+        }
+    }
 
     }
-}
