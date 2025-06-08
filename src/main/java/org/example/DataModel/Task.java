@@ -15,6 +15,8 @@ public class Task {
         this.hours = hours;
         this.Date = Date;
         this.employee = employee;
+        project.getTaskList().add(this);
+        employee.getTaskList().add(this);
     }
 
     public String getName() {

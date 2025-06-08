@@ -8,13 +8,13 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        DataModel dataModel = new DataModel("MyDataModel", null);
+        DataModel dataModel = new DataModel("MyDataModel");
         ExcelReader reader = new ExcelReader(dataModel);
 
-        reader.readAllExcelFilesRecursively("src/main/resources/2024");
+        reader.readAllExcelFilesRecursively("src/main/resources/2012");
 
-        WorkHoursReportGenerator reportGenerator = new WorkHoursReportGenerator(dataModel);
-        reportGenerator.printTotalHoursForEmployees();
+        Report1 reportGenerator = new Report1(dataModel);
+        reportGenerator.print();
 
      //   ReportGenerator reportGenerator = new ReportGenerator(dataModel);
 //        String choice = "";

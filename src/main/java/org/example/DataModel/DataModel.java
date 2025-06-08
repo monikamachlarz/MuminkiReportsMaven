@@ -6,7 +6,7 @@ public class DataModel {
     private String name;
     private ArrayList<Project> projectList = new ArrayList<>();
     private ArrayList<Employee> employeesList = new ArrayList<>();
-    public DataModel(String name, Project project) {
+    public DataModel(String name) {
         this.name = name;
 
     }

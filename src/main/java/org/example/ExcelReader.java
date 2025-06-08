@@ -78,8 +78,8 @@ public class ExcelReader{
 
                     Task task = new Task(taskName, project, hours, date, employee);
 
-                    employee.getTaskList().add(task);
-                    project.getTaskList().add(task);
+                    /*employee.getTaskList().add(task);
+                    project.getTaskList().add(task);*/
                 }
 
             }

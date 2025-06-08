@@ -4,15 +4,15 @@ import org.example.DataModel.DataModel;
 import org.example.DataModel.Employee;
 import org.example.DataModel.Task;
 
-public class WorkHoursReportGenerator {
+public class Report1 {
 
     private DataModel dataModel;
 
-    public WorkHoursReportGenerator(DataModel dataModel) {
+    public Report1(DataModel dataModel) {
         this.dataModel = dataModel;
     }
 
-    public void printTotalHoursForEmployees() {
+    public void print() {
         for (Employee employee : dataModel.getEmployeesList()) {
             double totalHours = 0;
             for (Task task : employee.getTaskList()) {
