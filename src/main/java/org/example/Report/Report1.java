@@ -23,7 +23,10 @@ public class Report1  implements IReport {
                     totalHours = totalHours + task.getHours();
                 }
             }
-            System.out.println( employee.getName() + " " + totalHours);
+            if (totalHours != 0) {
+                System.out.println( employee.getName() + " " + totalHours);
+            }
+
         }
     }
 }
