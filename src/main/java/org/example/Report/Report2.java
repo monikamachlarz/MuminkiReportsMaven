@@ -34,7 +34,7 @@ public class Report2 implements IReport {
 
         String className = this.getClass().getSimpleName();
         System.out.println("\n+================= RAPORT: " + className + " ==================+");
-        System.out.printf("| %-4s | %-29s | %-10s%n", "ID", "Employee Name", "Total Hours |");
+        System.out.printf("| %-4s | %-29s | %-10s%n", "ID", "Nazwa projektu", "Godziny     |");
         System.out.println("+------+-------------------------------+-------------+");
 
         int id = 1;
