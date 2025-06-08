@@ -16,6 +16,10 @@ public class Report1  implements IReport {
 
     @Override
     public void generateReport() {
+        String className = this.getClass().getSimpleName();
+        System.out.println("\n+=============== RAPORT: " + className + " =============+");
+        System.out.printf("%-31s | %-10s%n", "| Employee Name", "Total Hours |");
+        System.out.println("+-------------------------------+-------------+");
         for (Employee employee : dataModel.getEmployeesList()) {
             double totalHours = 0;
             for (Task task : employee.getTaskList()) {
@@ -23,10 +27,14 @@ public class Report1  implements IReport {
                     totalHours = totalHours + task.getHours();
                 }
             }
-            if (totalHours != 0) {
-                System.out.println( employee.getName() + " " + totalHours);
-            }
+            printReport(employee.getName(), totalHours);
+        }
+        System.out.println("+=============================================+");
+    }
 
+    public void printReport(String employee, double totalHours) {
+        if (totalHours > 0) {
+            System.out.printf("| %-29s | %-11.2f |%n", employee, totalHours);
         }
     }
 }
