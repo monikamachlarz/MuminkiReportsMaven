@@ -17,7 +17,7 @@ public class Main {
         Report1 reportGenerator = new Report1(dataModel);
         reportGenerator.print();
 
-     //   ReportGenerator reportGenerator = new ReportGenerator(dataModel);
+        //   ReportGenerator reportGenerator = new ReportGenerator(dataModel);
 //        String choice = "";
 //
 //        while (!choice.equals("koniec")) {
@@ -64,29 +64,30 @@ public class Main {
 //            }
 //        }
 //    }
+//
+//    private static String readYear(Scanner scanner) {
+//        while (true) {
+//            System.out.println("Podaj rok (akceptowany format YYYY):");
+//            String year = scanner.nextLine();
+//            if (year.matches("\\d{4}")) {
+//                return year;
+//            } else {
+//                System.out.println("Nieprawidłowy format roku. Spróbuj ponownie (np. 2024).");
+//            }
+//        }
+//    }
+//
+//    private static String readEmployee(Scanner scanner) {
+//        while (true) {
+//            System.out.println("Podaj pracownika (akceptowany format nazwisko_imie):");
+//            String employee = scanner.nextLine();
+//            if (employee.matches("\\p{L}+_\\p{L}+")) {
+//                return employee;
+//            } else {
+//                System.out.println("Nieprawidłowy format. Wprowadź nazwisko i imię w formacie nazwisko_imie (np. Kowalski_Jan).");
+//            }
+//        }
+//    }
 
-    private static String readYear(Scanner scanner) {
-        while (true) {
-            System.out.println("Podaj rok (akceptowany format YYYY):");
-            String year = scanner.nextLine();
-            if (year.matches("\\d{4}")) {
-                return year;
-            } else {
-                System.out.println("Nieprawidłowy format roku. Spróbuj ponownie (np. 2024).");
-            }
-        }
     }
-
-    private static String readEmployee(Scanner scanner) {
-        while (true) {
-            System.out.println("Podaj pracownika (akceptowany format nazwisko_imie):");
-            String employee = scanner.nextLine();
-            if (employee.matches("\\p{L}+_\\p{L}+")) {
-                return employee;
-            } else {
-                System.out.println("Nieprawidłowy format. Wprowadź nazwisko i imię w formacie nazwisko_imie (np. Kowalski_Jan).");
-            }
-        }
-    }
-
 }
