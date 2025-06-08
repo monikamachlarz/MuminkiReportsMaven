@@ -2,9 +2,9 @@ package org.example;
 
 
 import org.example.DataModel.DataModel;
+import org.example.Report.Report1;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 
 public class Main {
@@ -15,7 +15,7 @@ public class Main {
         reader.readAllExcelFilesRecursively("src/main/resources/2012");
 
         Report1 reportGenerator = new Report1(dataModel);
-        reportGenerator.print();
+        reportGenerator.generateReport();
 
         //   ReportGenerator reportGenerator = new ReportGenerator(dataModel);
 //        String choice = "";
