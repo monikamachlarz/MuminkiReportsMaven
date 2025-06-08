@@ -5,6 +5,7 @@ import org.example.DataModel.Project;
 import org.example.DataModel.Task;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class Report4 implements IReport {
 
@@ -51,19 +52,31 @@ public class Report4 implements IReport {
             totalHours += projectsHour.get(projectName);
         }
 
-        System.out.println("Report4: ");
-        System.out.println("-------------------------------------------------------------");
-        System.out.println("|LP| Project name |   %|");
-        System.out.println("-------------------------------------------------------------");
-        System.out.println();
-        int number = 0;
+        String className = this.getClass().getSimpleName();
+        System.out.println("\n+================= RAPORT: " + className + " ==================+");
+        System.out.printf("| %-4s | %-29s | %-10s%n", "ID", "Nazwa projektu", " % czasu    |");
+        System.out.println("+------+-------------------------------+-------------+");
+
+        int id = 1;
         for (String projectName : projectsHour.keySet()) {
             double averageHours = projectsHour.get(projectName) / totalHours;
             double roundAverageHours = Math.round(averageHours * 100.0);
-            System.out.println("| " + ++number + ".| " + projectName + " |" + Math.floor(roundAverageHours) + "|");
+            printReport(id++, projectName, Math.floor(roundAverageHours));
         }
 
-        System.out.println("-------------------------------------------------------------");
+        System.out.println("------------------------------------------------------");
 
     }
+
+    public void printReport(int id, String projectName, double percentage) {
+        System.out.printf("| %-4d | %-29s | %-11.2f |%n", id, projectName, percentage);
+    }
+
+    @Override
+    public List<String> generateReportForExport (){
+        return generateReportForExport();
+    }
+
+    @Override
+    public void exportReportToPdf(List<String> lines, String outputPath) {}
 }

@@ -2,12 +2,10 @@ package org.example;
 
 
 import org.example.DataModel.DataModel;
-import org.example.Report.IReport;
-import org.example.Report.Report1;
-import org.example.Report.Report2;
-import org.example.Report.Report5;
+import org.example.Report.*;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -31,6 +29,8 @@ public class Main {
                     String rok = readYear(scanner);
                     IReport report1 = new Report1(Integer.parseInt(rok), dataModel);
                     report1.generateReport();
+                    List<String> reportToExport = report1.generateReportForExport();
+                    report1.exportReportToPdf(reportToExport, "report1.pdf");
                 }
                 case "2" -> {
                     String rok = readYear(scanner);
@@ -44,10 +44,13 @@ public class Main {
                 }
                 case "4" -> {
                     String rok = readYear(scanner);
-                    String pracownik = readEmployee(scanner);
+                    System.out.println("Podaj pracownika (akceptowany format: nazwisko imie):");
+                    String pracownik = scanner.nextLine();
 
-                    /* wygenerujRaport4(rok, pracownik); */
-                    System.out.println("Tutaj bedzie wolana metoda wygenerujRaport4(rok, pracownik)");
+                    IReport report4 = new Report4(Integer.parseInt(rok), dataModel,pracownik);
+                    report4.generateReport();
+
+
                 }
                 case "5" -> {
                     String rok = readYear(scanner);
