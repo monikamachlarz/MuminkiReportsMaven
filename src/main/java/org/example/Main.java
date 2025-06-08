@@ -15,7 +15,7 @@ public class Main {
 
         reader.readAllExcelFilesRecursively("src/main/resources");
 
-        Report2 reportGenerator = new Report2(2025, dataModel);
+        Report1 reportGenerator = new Report1(2012, dataModel);
         reportGenerator.generateReport();
 
         //   ReportGenerator reportGenerator = new ReportGenerator(dataModel);
