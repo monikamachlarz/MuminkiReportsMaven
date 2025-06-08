@@ -6,6 +6,7 @@ import org.example.DataModel.DataModel;
 import java.io.IOException;
 import java.util.Scanner;
 
+
 public class Main {
     public static void main(String[] args) throws IOException {
         DataModel dataModel = new DataModel("MyDataModel");
@@ -62,9 +63,9 @@ public class Main {
 //                }
 //            }
 //        }
-    }
+//    }
 
-    private static String wczytajRok(Scanner scanner) {
+    private static String readYear(Scanner scanner) {
         while (true) {
             System.out.println("Podaj rok (akceptowany format YYYY):");
             String year = scanner.nextLine();
@@ -76,12 +77,12 @@ public class Main {
         }
     }
 
-    private static String wczytajPracownika(Scanner scanner) {
+    private static String readEmployee(Scanner scanner) {
         while (true) {
             System.out.println("Podaj pracownika (akceptowany format nazwisko_imie):");
-            String input = scanner.nextLine();
-            if (input.matches("\\p{L}+_\\p{L}+")) {
-                return input;
+            String employee = scanner.nextLine();
+            if (employee.matches("\\p{L}+_\\p{L}+")) {
+                return employee;
             } else {
                 System.out.println("Nieprawidłowy format. Wprowadź nazwisko i imię w formacie nazwisko_imie (np. Kowalski_Jan).");
             }

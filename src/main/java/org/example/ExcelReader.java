@@ -30,8 +30,7 @@ public class ExcelReader{
         String employeeName = fileName.replace('_', ' ');
         Employee employee = dataModel.addEmployee(employeeName);
         try (FileInputStream fis = new FileInputStream(new File(filePath));
-             Workbook workbook = new HSSFWorkbook(fis)) {
-
+             Workbook workbook = new HSSFWorkbook(fis)) { // używamy HSSFWorkbook dla .xls
             int numberOfSheets = workbook.getNumberOfSheets();
             System.out.println("Zakładki w pliku: ");
             for (int i = 0; i < numberOfSheets; i++) {
@@ -72,6 +71,30 @@ public class ExcelReader{
                                 hours = Double.parseDouble(hoursCell.getStringCellValue());
                             } catch (NumberFormatException e) {
                                 hours = 0;
+//             // Wyświetlenie nazw arkuszy (zakładek)
+//             int numberOfSheets = workbook.getNumberOfSheets();
+//             System.out.println("Zakładki w pliku: ");
+//             for (int i = 0; i < numberOfSheets; i++) {
+//                 System.out.println(" - " + workbook.getSheetName(i));
+//             }
+
+//             // Wczytywanie danych z pierwszego arkusza (możesz zmienić indeks, aby odczytać inne)
+//             Sheet sheet = workbook.getSheetAt(0); // pierwszy arkusz
+//             System.out.println("Odczyt z arkusza: " + sheet.getSheetName());
+
+//             // Odczyt danych z arkusza
+//             for (Row row : sheet) {
+//                 for (Cell cell : row) {
+//                     switch (cell.getCellType()) {
+//                         case STRING:
+//                             System.out.print(cell.getStringCellValue() + "\t");
+//                             break;
+//                         case NUMERIC:
+//                             if (DateUtil.isCellDateFormatted(cell)) {
+//                                 System.out.print(cell.getDateCellValue() + "\t");
+//                             } else {
+//                                 System.out.print(cell.getNumericCellValue() + "\t");
+// >>>>>>> main
                             }
                         }
                     }
