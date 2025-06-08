@@ -69,9 +69,10 @@ public class Report1  implements IReport {
     @Override
     public void exportReportToPdf(List<String> lines, String outputPath) {
         Path downloadPath = Paths.get(System.getProperty("user.home"), "Downloads");
+        Path fullPath = downloadPath.resolve(outputPath);
         try {
             Document document = new Document();
-            PdfWriter.getInstance(document, new FileOutputStream(outputPath));
+            PdfWriter.getInstance(document, new FileOutputStream(fullPath.toFile()));
             document.open();
 
             for (String line : lines) {
@@ -79,7 +80,7 @@ public class Report1  implements IReport {
             }
 
             document.close();
-            System.out.println("Zapisano PDF: " + downloadPath+ "/"+ outputPath);
+            System.out.println("Zapisano PDF: " + fullPath);
         } catch (Exception e) {
             System.err.println("Błąd podczas zapisu PDF: " + e.getMessage());
 
