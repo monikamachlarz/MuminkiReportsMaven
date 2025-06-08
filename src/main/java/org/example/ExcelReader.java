@@ -30,7 +30,7 @@ public class ExcelReader{
         String employeeName = fileName.replace('_', ' ');
         Employee employee = dataModel.addEmployee(employeeName);
         try (FileInputStream fis = new FileInputStream(new File(filePath));
-             Workbook workbook = new HSSFWorkbook(fis)) { // używamy HSSFWorkbook dla .xls
+             Workbook workbook = new HSSFWorkbook(fis)) {
             int numberOfSheets = workbook.getNumberOfSheets();
             System.out.println("Zakładki w pliku: ");
             for (int i = 0; i < numberOfSheets; i++) {
@@ -41,27 +41,39 @@ public class ExcelReader{
                 Project project = dataModel.getProject(projectName);
 
                 boolean isHeader = true;
+                int numberOfRows = 1;
+
                 for (Row row : sheet) {
                     if (isHeader) {
                         isHeader = false;
+                        numberOfRows++;
                         continue;
                     }
 
                     Cell dateCell = row.getCell(0);
-                    System.out.println(dateCell);
                     Cell taskCell = row.getCell(1);
-                    System.out.println(taskCell);
                     Cell hoursCell = row.getCell(2);
-                    System.out.println(hoursCell);
 
                     if (dateCell == null || dateCell.getCellType() != CellType.NUMERIC || !DateUtil.isCellDateFormatted(dateCell)) {
+                        System.out.println("Error: Błąd w lini " + numberOfRows + " nieprawidlowy format daty lub jej brak");
+                        numberOfRows++;
                         continue;
                     }
                     Date dateValue = dateCell.getDateCellValue();
                     LocalDate date = dateValue.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
                     String taskName = (taskCell != null && taskCell.getCellType() == CellType.STRING) ? taskCell.getStringCellValue() : "";
+                    if (taskName == null || taskName.isEmpty()) {
+                        System.out.println("Error: Błąd w lini " + numberOfRows+" : Nieprawidlowy format lub brak taska");
+                        numberOfRows++;
+                        continue;
+                    }
 
+                    if (hoursCell == null ) {
+                        System.out.println("Error: Błąd w lini " + numberOfRows+" : Brak godziny");
+                        numberOfRows++;
+                        continue;
+                    }
                     double hours = 0;
                     if (hoursCell != null) {
                         if (hoursCell.getCellType() == CellType.NUMERIC) {
@@ -71,38 +83,14 @@ public class ExcelReader{
                                 hours = Double.parseDouble(hoursCell.getStringCellValue());
                             } catch (NumberFormatException e) {
                                 hours = 0;
-//             // Wyświetlenie nazw arkuszy (zakładek)
-//             int numberOfSheets = workbook.getNumberOfSheets();
-//             System.out.println("Zakładki w pliku: ");
-//             for (int i = 0; i < numberOfSheets; i++) {
-//                 System.out.println(" - " + workbook.getSheetName(i));
-//             }
-
-//             // Wczytywanie danych z pierwszego arkusza (możesz zmienić indeks, aby odczytać inne)
-//             Sheet sheet = workbook.getSheetAt(0); // pierwszy arkusz
-//             System.out.println("Odczyt z arkusza: " + sheet.getSheetName());
-
-//             // Odczyt danych z arkusza
-//             for (Row row : sheet) {
-//                 for (Cell cell : row) {
-//                     switch (cell.getCellType()) {
-//                         case STRING:
-//                             System.out.print(cell.getStringCellValue() + "\t");
-//                             break;
-//                         case NUMERIC:
-//                             if (DateUtil.isCellDateFormatted(cell)) {
-//                                 System.out.print(cell.getDateCellValue() + "\t");
-//                             } else {
-//                                 System.out.print(cell.getNumericCellValue() + "\t");
-// >>>>>>> main
                             }
                         }
                     }
-
                     Task task = new Task(taskName, project, hours, date, employee);
+                    numberOfRows++;
 
-                    /*employee.getTaskList().add(task);
-                    project.getTaskList().add(task);*/
+                    //employee.getTaskList().add(task);
+                  //  project.getTaskList().add(task);
                 }
 
             }
