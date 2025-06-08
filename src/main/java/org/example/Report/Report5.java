@@ -20,6 +20,12 @@ public class Report5 implements IReport{
 
     @Override
     public void generateReport() {
+        String className = this.getClass().getSimpleName();
+        System.out.println("\n+=============================================== RAPORT: " + className + " ================================================+");
+        System.out.printf("| %-4s | %-90s | %-10s%n", "ID", "Task Name", "Hours      |");
+        System.out.println("+------+--------------------------------------------------------------------------------------------+------------+");
+
+        int id = 1;
         HashMap<String, Double> taskHashMap = new HashMap<>();
         for (Project project : dataModel.getProjectList()) {
             if (project.getName().equals(projectName)) {
@@ -31,7 +37,9 @@ public class Report5 implements IReport{
             }
         }
         for (Map.Entry<String, Double> entry : taskHashMap.entrySet()) {
-            System.out.println("Task: " + entry.getKey() + ", Total hours: " + entry.getValue());
+            System.out.printf("| %-4d | %-90s | %-10.2f |%n", id++, entry.getKey(), entry.getValue());
         }
+
+        System.out.println("+------+--------------------------------------------------------------------------------------------+------------+");
     }
 }
