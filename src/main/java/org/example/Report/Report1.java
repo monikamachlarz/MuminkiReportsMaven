@@ -7,8 +7,10 @@ import org.example.DataModel.Task;
 public class Report1  implements IReport {
 
     private DataModel dataModel;
+    private int year;
 
-    public Report1(DataModel dataModel) {
+    public Report1(int year, DataModel dataModel) {
+        this.year = year;
         this.dataModel = dataModel;
     }
 
@@ -17,11 +19,12 @@ public class Report1  implements IReport {
         for (Employee employee : dataModel.getEmployeesList()) {
             double totalHours = 0;
             for (Task task : employee.getTaskList()) {
-                totalHours += task.getHours();
+                if (task.getDate().getYear()==year) {
+                    totalHours = totalHours + task.getHours();
+                }
             }
             System.out.println( employee.getName() + " " + totalHours);
         }
-
     }
 }
 
