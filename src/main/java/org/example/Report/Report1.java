@@ -43,6 +43,7 @@ public class Report1  implements IReport {
                 printReport(id++, employee.getName(), totalHours);
             }
         }
+        System.out.println("+====================================================+");
     }
 
     public List<String> generateReportForExport () {
@@ -59,7 +60,6 @@ public class Report1  implements IReport {
                 reportLines.add(employee.getName() + ": " + totalHours + " godzin");
             }
         }
-
         return reportLines;
     }
 
